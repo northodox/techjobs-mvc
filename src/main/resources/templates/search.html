@@ -40,7 +40,7 @@
 
     <p th:unless = "${jobs} and ${jobs.size()}">No jobs found :(</p>
     <ul th:each = "job : ${jobs}">
-        <li th:each = "position: ${job}" th:text = "${entry.getKey() + ':' + entry.getValue()}"></li>
+        <li th:each = "position: ${job}" th:text = "${position.getKey() + ':' + position.getValue()}"></li>
     </ul>
 
 </div>
