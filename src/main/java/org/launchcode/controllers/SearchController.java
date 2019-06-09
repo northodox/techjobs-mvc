@@ -2,6 +2,7 @@ package org.launchcode.controllers;
 
 import org.hibernate.validator.constraints.EAN;
 import org.launchcode.models.JobData;
+import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,16 @@ public class SearchController {
     // TODO #1 - Create handler to process search request and display results
 
     @RequestMapping(value = "results")
-    public String searchProcess(Model model, @RequestParam String searchTerm, @RequestParam String searchMethod) {
-
+    public String searchProcess(Model model, @RequestParam String searchTerm, @RequestParam String searchType) {
+        ArrayList<HashMap<String, String>> jobs;
+        if (searchType.equals("all") || searchTerm.equals("")) {
+            jobs = JobData.findByValue(searchTerm);
+        }
+        else {
+            jobs = JobData.findByValue(searchTerm);
+        }
+        model.addAttribute("columns", ListController.columnChoices);
+        model.addAttribute("jobs", jobs);
+        return "search";
     }
 }
