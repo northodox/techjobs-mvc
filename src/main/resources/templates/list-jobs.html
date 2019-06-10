@@ -13,9 +13,9 @@
     <!-- TODO #3 - Use the same list display from search.html -->
 
     <p th:unless = "${jobs} and ${jobs.size()}">No jobs found :(</p>
-    <ul th:each = "job : ${jobs}">
-        <li th:each = "position: ${job}" th:text = "${position.getKey() + ':' + position.getValue()}"></li>
-    </ul>
+    <table th:each = "job : ${jobs}">
+        <td th:each = "position: ${job}" th:text = "${position.getKey() + ':' + position.getValue()}"></td>
+    </table>
 
 </div>
 
