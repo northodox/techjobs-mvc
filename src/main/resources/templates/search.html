@@ -39,9 +39,15 @@
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
     <p th:unless = "${jobs} and ${jobs.size()}">No jobs found :(</p>
-    <table class = "job-listing" th:each = "job : ${jobs}">
-        <td th:each = "position: ${job}" th:text = "${position.getKey() + ':' + position.getValue()}"></td>
+    <table th:class = "job-listing" th:each = "job : ${jobs}">
+        <tr th:each = "position: ${job}">
+            <td th:text = "${position.getKey() + ': '}"></td>
+            <td th:text = "${position.getValue()}"></td>
+        </tr>
+        <br/>
     </table>
+
+
 
 </div>
 
